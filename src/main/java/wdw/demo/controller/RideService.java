@@ -47,6 +47,10 @@ public class RideService {
             } else {
                 return null;
             }
+    }
 
-}
+    public Ride updateRide(Ride ride) {
+
+        return rideRepository.save(ride);
+    }
 }
