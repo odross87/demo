@@ -22,15 +22,10 @@ public class Ride {
     @Column(name= "RIDE_DESCRIPTION")
     private String ride_description;
 
-    @ManyToOne()
-    @JoinColumn(name = "PARK_ID")
-    private Park park;
-
-    public Ride(String name, String type, String description, Park park){
+    public Ride(String name, String type, String description){
         this.ride_name = name;
         this.ride_type = type;
         this.ride_description = description;
-        this.park = park;
     }
 
 

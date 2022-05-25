@@ -21,8 +21,6 @@ public class Park {
     @Column(name="OPENING_YEAR")
     private int openingYear;
 
-    @OneToMany(mappedBy = "park", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Ride> rides;
 
     public Park(String park_name, int surface, int openingYear){
         this.park_name = park_name;

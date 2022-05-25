@@ -36,10 +36,10 @@ public class ApplicationCommandRunner implements CommandLineRunner {
         logger.info("Welcome to the Create Rides");
         // String title, String author, int pages, int year, String iSBN
 
-        parkService.findParkById(38L).get();
-        Ride ride1 = new Ride("Expedition Everest", "Roller Coaster", "Wander into a Tibetan village at the base of Mount Everest and board a train to the top of the world.", parkService.findParkById(38L).get());
-        Ride ride2 = new Ride("Kali River Rapids", "Water Ride", "Skim across an erupting geyser, drift below a canopy of lush vegetation and be whisked along fast-moving rapids.", parkService.findParkById(38L).get());
-        Ride ride3 = new Ride("Big Thunder Mountain", "Roller Coaster", "Race through a haunted gold mine aboard a speeding train on this thrilling coaster-style ride.",  parkService.findParkById(35L).get());
+
+        Ride ride1 = new Ride("Expedition Everest", "Roller Coaster", "Wander into a Tibetan village at the base of Mount Everest and board a train to the top of the world.");
+        Ride ride2 = new Ride("Kali River Rapids", "Water Ride", "Skim across an erupting geyser, drift below a canopy of lush vegetation and be whisked along fast-moving rapids.");
+        Ride ride3 = new Ride("Big Thunder Mountain", "Roller Coaster", "Race through a haunted gold mine aboard a speeding train on this thrilling coaster-style ride.");
 
         rideService.createRide(ride1);
         rideService.createRide(ride2);
@@ -49,7 +49,7 @@ public class ApplicationCommandRunner implements CommandLineRunner {
 
 
     }
-    public void createBooks(){
+    public void createParks(){
         logger.info("Welcome to the createBooks");
         // String title, String author, int pages, int year, String iSBN
         Park park1 = new Park("Magic Kingdom", 49, 1975);
