@@ -40,16 +40,7 @@ public class Park {
         ride.setPark(this);
     }
 
-    public String getRidesFromPark(){
-        String rides= "";
-        for (Ride ride : this.rides
-             ) {
-            rides += ride.getRide_name() + " \n";
-        }
 
-        return rides;
-
-    }
 
 
 }

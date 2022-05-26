@@ -10,6 +10,7 @@ import wdw.demo.service.RideService;
 import wdw.demo.model.Park;
 import wdw.demo.model.Ride;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 @Component
@@ -28,31 +29,42 @@ public class ApplicationCommandRunner implements CommandLineRunner {
 
         Scanner reader = new Scanner(System.in);
 
+        //createRides();
         checkAnimalKingdomRides();
 
 
     }
 
-    private void checkAnimalKingdomRides() {
-        Park aK = parkService.findParkById(151L).get();
+   private void checkAnimalKingdomRides() {
+        Park ak = parkService.findParkById(165L).get();
 
-        System.out.println(aK.getPark_name());
+        //System.out.println(ak.getPark_name());
+
+        //System.out.println(ak.getOpeningYear());
+
+        //System.out.println(ak.getSurface());
+
+       // System.out.println(ak.getRides().size());
     }
-
     public void createRides(){
-        logger.info("Welcome to the Create Rides");
+        logger.info("Creating rides");
 
 
         Ride ride1 = new Ride("Expedition Everest", "Roller Coaster", "Wander into a Tibetan village at the base of Mount Everest and board a train to the top of the world.");
         Ride ride2 = new Ride("Kali River Rapids", "Water Ride", "Skim across an erupting geyser, drift below a canopy of lush vegetation and be whisked along fast-moving rapids.");
         Ride ride3 = new Ride("Big Thunder Mountain", "Roller Coaster", "Race through a haunted gold mine aboard a speeding train on this thrilling coaster-style ride.");
 
-        logger.info("Finishing creating rides.");
-        logger.info("Welcome to the create Parks");
+        logger.info("Rides created");
+        logger.info("Creating parks");
+
+
         Park park1 = new Park("Magic Kingdom", 49, 1975);
         Park park2 = new Park("Epcot Center",68, 1982);
         Park park3 = new Park("Hollywood Studios", 52, 1987);
         Park park4 = new Park("Animal Kingdom", 89,2001);
+
+        logger.info("Parks created");
+        logger.info("Matching parks with rides ");
 
         park1.addRide(ride3);
         park4.addRide(ride1);
@@ -63,13 +75,11 @@ public class ApplicationCommandRunner implements CommandLineRunner {
         parkService.createPark(park3);
         parkService.createPark(park4);
 
-
-
         rideService.createRide(ride1);
         rideService.createRide(ride2);
         rideService.createRide(ride3);
 
-        logger.info("Finishing creating parks...");
+        logger.info("Finishing creating entries...");
 
     }
 
