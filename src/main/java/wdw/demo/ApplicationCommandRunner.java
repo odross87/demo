@@ -9,8 +9,6 @@ import wdw.demo.service.ParkService;
 import wdw.demo.service.RideService;
 import wdw.demo.model.Park;
 import wdw.demo.model.Ride;
-
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 @Component
@@ -29,23 +27,10 @@ public class ApplicationCommandRunner implements CommandLineRunner {
 
         Scanner reader = new Scanner(System.in);
 
-        //createRides();
-        checkAnimalKingdomRides();
-
-
+        createOneRide(reader);
     }
 
-   private void checkAnimalKingdomRides() {
-        Park ak = parkService.findParkById(165L).get();
 
-        //System.out.println(ak.getPark_name());
-
-        //System.out.println(ak.getOpeningYear());
-
-        //System.out.println(ak.getSurface());
-
-       // System.out.println(ak.getRides().size());
-    }
     public void createRides(){
         logger.info("Creating rides");
 
@@ -95,6 +80,27 @@ public class ApplicationCommandRunner implements CommandLineRunner {
         int year = reader.nextInt();
 
         parkService.createPark(new Park(name, surface,year));
+
+        logger.info("finishing createPark ...");
+    }
+
+    public void createOneRide(Scanner reader){
+        logger.info("Welcome to the Parks");
+
+        System.out.println("Ride's Name?");
+        String name = reader.nextLine();
+        System.out.println("Description? ");
+        String description = reader.nextLine();
+        System.out.println("Type? ");
+        String type = reader.nextLine();
+        System.out.println("In which park is located? (Choose the ID)");
+        long idPark = reader.nextLong();
+
+        Park park = parkService.findParkById(idPark).get();
+        Ride rideCreated = new Ride(name, type, description);
+        park.addRide(rideCreated);
+
+        rideService.createRide(rideCreated);
 
         logger.info("finishing createPark ...");
     }
