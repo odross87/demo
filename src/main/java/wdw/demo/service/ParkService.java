@@ -1,4 +1,4 @@
-package wdw.demo.controller;
+package wdw.demo.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

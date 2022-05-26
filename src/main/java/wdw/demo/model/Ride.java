@@ -1,12 +1,13 @@
 package wdw.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 
 @Getter @Setter @ToString @NoArgsConstructor @AllArgsConstructor
 
 @Entity(name = "ride")
-@Table(name = "Ride")
+@Table(name = "RIDE")
 public class Ride {
 
     @Id
@@ -21,6 +22,11 @@ public class Ride {
 
     @Column(name= "RIDE_DESCRIPTION")
     private String ride_description;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="park")
+    private Park park;
 
     public Ride(String name, String type, String description){
         this.ride_name = name;
