@@ -5,8 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import wdw.demo.service.ParkService;
 import wdw.demo.model.Park;
-import wdw.demo.model.Ride;
-import wdw.demo.service.RideService;
+import wdw.demo.model.Attraction;
+import wdw.demo.service.AttractionService;
 
 import java.util.Optional;
 
@@ -33,6 +33,15 @@ public class ParkRestController {
 
         Optional<Park> parkFound = parkservice.findParkById(id);
         if (parkFound.isPresent()) return  parkFound.get();
+
+        return null;
+    }
+
+    @GetMapping("getParkByName")
+    public Park findParkbyName(@RequestParam String name){
+
+        Optional<Park> parkFound = parkservice.findParkByName(name);
+        if (parkFound.isPresent()) return parkFound.get();
 
         return null;
     }
@@ -68,8 +77,8 @@ public class ParkRestController {
 
             Park parkToUpdate = parkFound.get();
 
-            if  (dataPark.getPark_name() != null) {
-                parkToUpdate.setPark_name(dataPark.getPark_name());
+            if  (dataPark.getParkName() != null) {
+                parkToUpdate.setParkName(dataPark.getParkName());
             }
             if  (dataPark.getSurface() != 0) {
                 parkToUpdate.setSurface(dataPark.getSurface());

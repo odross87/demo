@@ -33,6 +33,11 @@ public class ParkService {
         return parkRepository.findById(id);
     }
 
+    public Optional<Park> findParkByName(String name){
+
+        return parkRepository.findParkByParkName(name);
+    }
+
     public Park deleteParkById(Long id){
         //Find out IF this id-book IS in our DB
         Optional<Park> parkContainer = findParkById(id);

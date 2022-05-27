@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import wdw.demo.service.ParkService;
-import wdw.demo.service.RideService;
+import wdw.demo.service.AttractionService;
 import wdw.demo.model.Park;
-import wdw.demo.model.Ride;
+import wdw.demo.model.Attraction;
 import java.util.Scanner;
 
 @Component
@@ -20,26 +20,25 @@ public class ApplicationCommandRunner implements CommandLineRunner {
     ParkService parkService;
 
     @Autowired
-    RideService rideService;
+    AttractionService attractionService;
 
     @Override
     public void run(String... args) throws Exception {
 
         Scanner reader = new Scanner(System.in);
 
-        createOneRide(reader);
     }
 
 
-    public void createRides(){
-        logger.info("Creating rides");
+    public void createAttractions(){
+        logger.info("Creating attractions");
 
 
-        Ride ride1 = new Ride("Expedition Everest", "Roller Coaster", "Wander into a Tibetan village at the base of Mount Everest and board a train to the top of the world.");
-        Ride ride2 = new Ride("Kali River Rapids", "Water Ride", "Skim across an erupting geyser, drift below a canopy of lush vegetation and be whisked along fast-moving rapids.");
-        Ride ride3 = new Ride("Big Thunder Mountain", "Roller Coaster", "Race through a haunted gold mine aboard a speeding train on this thrilling coaster-style ride.");
+        Attraction attraction1 = new Attraction("Expedition Everest", "Wander into a Tibetan village at the base of Mount Everest and board a train to the top of the world.");
+        Attraction attraction2 = new Attraction("Kali River Rapids", "Skim across an erupting geyser, drift below a canopy of lush vegetation and be whisked along fast-moving rapids.");
+        Attraction attraction3 = new Attraction("Big Thunder Mountain", "Race through a haunted gold mine aboard a speeding train on this thrilling coaster-style attraction.");
 
-        logger.info("Rides created");
+        logger.info("Attractions created");
         logger.info("Creating parks");
 
 
@@ -49,20 +48,20 @@ public class ApplicationCommandRunner implements CommandLineRunner {
         Park park4 = new Park("Animal Kingdom", 89,2001);
 
         logger.info("Parks created");
-        logger.info("Matching parks with rides ");
+        logger.info("Matching parks with attractions ");
 
-        park1.addRide(ride3);
-        park4.addRide(ride1);
-        park4.addRide(ride2);
+        park1.addAttraction(attraction3);
+        park4.addAttraction(attraction1);
+        park4.addAttraction(attraction2);
 
         parkService.createPark(park1);
         parkService.createPark(park2);
         parkService.createPark(park3);
         parkService.createPark(park4);
 
-        rideService.createRide(ride1);
-        rideService.createRide(ride2);
-        rideService.createRide(ride3);
+        attractionService.createAttraction(attraction1);
+        attractionService.createAttraction(attraction2);
+        attractionService.createAttraction(attraction3);
 
         logger.info("Finishing creating entries...");
 
@@ -84,10 +83,10 @@ public class ApplicationCommandRunner implements CommandLineRunner {
         logger.info("finishing createPark ...");
     }
 
-    public void createOneRide(Scanner reader){
+    public void createOneAttraction(Scanner reader){
         logger.info("Welcome to the Parks");
 
-        System.out.println("Ride's Name?");
+        System.out.println("Attraction's Name?");
         String name = reader.nextLine();
         System.out.println("Description? ");
         String description = reader.nextLine();
@@ -97,10 +96,10 @@ public class ApplicationCommandRunner implements CommandLineRunner {
         long idPark = reader.nextLong();
 
         Park park = parkService.findParkById(idPark).get();
-        Ride rideCreated = new Ride(name, type, description);
-        park.addRide(rideCreated);
+        Attraction attractionCreated = new Attraction(name, description);
+        park.addAttraction(attractionCreated);
 
-        rideService.createRide(rideCreated);
+        attractionService.createAttraction(attractionCreated);
 
         logger.info("finishing createPark ...");
     }
