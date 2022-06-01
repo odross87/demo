@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import wdw.demo.repository.AttractionRepository;
 import wdw.demo.model.Attraction;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AttractionService {
+public class AttractionService{
 
     @Autowired
     AttractionRepository attractionRepository;
@@ -17,6 +18,13 @@ public class AttractionService {
     public Iterable<Attraction> ListAllAttractions() {
 
         Iterable<Attraction> attractions = attractionRepository.findAll();
+
+        return attractions;
+    }
+
+    public List<Attraction> findAttractionByAttractionNameContaining(String name){
+
+        List<Attraction> attractions = attractionRepository.findByAttractionNameContainingIgnoreCase(name);
 
         return attractions;
     }

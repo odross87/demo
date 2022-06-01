@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+<div class="w3-panel w3-padding-32">
+    <h1 class="w3-container w3-blue">Resort CRUD</h1>
+    <h3 class="w3-container w3-text-blue">Parks Table</h3>
+
+    <table class="w3-table-all w3-hoverable" >
+        <tr th:each="park:${parksfromController}">
+
+            <td th:text="${park.parkName}"></td>
+            <td th:text="${park.surface}"></td>
+            <td th:text="${park.openingYear}"></td>
+
+            <td> <a th:href ="@{deletePark(nameFromView=${park.parkName})}"
+                    class="w3-button w3-red">  Delete this park </a> </td>
+
+            <td> <a th:href ="@{updatePark(nameFromView=${park.parkName})}"
+                    class="w3-button w3-green">  Update this park </a> </td>
+
+        </tr>
+    </table>
+    <p>
+        <a th:href="@{/parks/newPark}" class="w3-button w3-blue">Add new park</a>
+    </p>
+
+    <h3 class="w3-container w3-text-blue">Attraction Table</h3>
+
+    <table class="w3-table-all w3-hoverable" >
+        <tr th:each="attraction:${attractionsfromController}">
+
+            <td th:text="${attraction.attractionName}"></td>
+            <td th:text="${attraction.attractionDescription}"></td>
+
+            <td> <a th:href ="@{deletePark(nameFromView=${attraction.attractionName})}"
+                    class="w3-button w3-red">  Delete this Attraction </a> </td>
+
+            <td> <a th:href ="@{updatePark(nameFromView=${attraction.attractionName})}"
+                    class="w3-button w3-green">  Update this Attraction </a> </td>
+
+        </tr>
+    </table>
+
+    <p>
+        <a th:href="@{/parks/newPark}" class="w3-button w3-blue">Add new attraction</a>
+    </p>
+
+</div>
+</body>
+</html>

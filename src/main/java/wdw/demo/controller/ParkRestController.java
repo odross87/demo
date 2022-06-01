@@ -5,8 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import wdw.demo.service.ParkService;
 import wdw.demo.model.Park;
-import wdw.demo.model.Attraction;
-import wdw.demo.service.AttractionService;
 
 import java.util.Optional;
 
@@ -51,19 +49,14 @@ public class ParkRestController {
     @PostMapping(path="addPark", consumes = "application/JSON")
     public Park addPark(@RequestBody Park park){
 
-
-        Park parkCreated = parkservice.createPark(park);
-
-        return parkCreated ;
+        return parkservice.createPark(park);
     }
 
 
     @DeleteMapping("deletePark")
     public Park deletePark (@RequestParam Long id){
 
-        Park deletedPark = parkservice.deleteParkById(id);
-
-        return deletedPark;
+        return parkservice.deleteParkById(id);
     }
 
 

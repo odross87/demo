@@ -6,10 +6,12 @@ import org.springframework.stereotype.Service;
 import wdw.demo.repository.ParkRepository;
 import wdw.demo.model.Park;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ParkService {
+public class ParkService{
 
     @Autowired
     ParkRepository parkRepository;
@@ -54,6 +56,17 @@ public class ParkService {
     public Park updatePark(Park parkToUpdate){
 
         return parkRepository.save(parkToUpdate);
+    }
+
+    public List<Park> listOfParks(){
+        List<Park> parks = new ArrayList<>();
+
+        for (Park park:listAllParks()
+             ) {
+            parks.add(park);
+        }
+
+        return parks;
     }
 
 

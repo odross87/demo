@@ -5,11 +5,12 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Getter
 @Setter @ToString @NoArgsConstructor @AllArgsConstructor
 @Entity(name="park")
 @Table(name="PARK")
-public class Park {
+public class Park{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,8 +24,7 @@ public class Park {
     private int openingYear;
 
     @OneToMany(mappedBy = "park", cascade = CascadeType.ALL)
-    private List<Attraction> attractions = new ArrayList<Attraction>();
-
+    private List<Attraction> attractions = new ArrayList<>();
 
     public Park(String parkName, int surface, int openingYear){
         this.parkName = parkName;

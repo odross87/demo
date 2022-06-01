@@ -91,12 +91,15 @@ public class WdwApplicationTest {
             //save attractions without park
             attractionService.createAttraction(attraction1);
             attractionService.createAttraction(attraction2);
+
             //assign park to attractions
-            parkFound.get().addAttraction(attraction1);
-            parkFound.get().addAttraction(attraction2);
+            Park park = parkFound.get();
+            park.addAttraction(attraction1);
+            park.addAttraction(attraction2);
 
-            parkService.createPark(parkFound.get());
-
+            parkService.createPark(park);
+        } else {
+            System.out.println("no es troba");
         }
     }
 

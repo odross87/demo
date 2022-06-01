@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import wdw.demo.model.Attraction;
 import wdw.demo.service.AttractionService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -36,6 +37,12 @@ public class AttractionRestController {
         if (attractionFound.isPresent()) return  attractionFound.get();
 
         return null;
+    }
+
+    @GetMapping("getAttractionsByNameContaining")
+    public List<Attraction> getAttractionsContainingName(@RequestParam String attractionName){
+
+        return attractionService.findAttractionByAttractionNameContaining(attractionName);
     }
 
     @PostMapping(path="addAttraction", consumes = "application/JSON")
