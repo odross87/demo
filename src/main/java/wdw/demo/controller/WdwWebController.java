@@ -31,11 +31,11 @@ public class WdwWebController {
     }
 
     @RequestMapping("/deletePark")
-    public String deletePark(@RequestParam String nameFromView){
+    public String deletePark(@RequestParam Long parkIdFromView){
+        parkService.deleteParkById(parkIdFromView);
 
-        System.out.println("parkName" + nameFromView);
 
-        return "parkdeleted";
+        return "web";
 
 
     }

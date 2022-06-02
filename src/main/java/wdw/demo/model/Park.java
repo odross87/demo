@@ -1,5 +1,6 @@
 package wdw.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class Park{
     private int surface;
     @Column(name="OPENING_YEAR")
     private int openingYear;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "park", cascade = CascadeType.ALL)
     private List<Attraction> attractions = new ArrayList<>();
 

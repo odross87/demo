@@ -112,7 +112,6 @@ public class WdwApplicationTest {
         attractionService.createAttraction(attraction1);
         attractionService.createAttraction(attraction2);
 
-        LocalDate date3 = LocalDate.of (1822,1,4);
         Park park1 = new Park("Typhoon Lagoon", 35, 1989);
 
         parkService.createPark(park1);

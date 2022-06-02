@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <body>
-<div class="w3-panel w3-padding-32">
+<div class="w3-panel">
     <h1 class="w3-container w3-blue">Resort CRUD</h1>
     <h3 class="w3-container w3-text-blue">Parks Table</h3>
 
@@ -16,7 +16,7 @@
             <td th:text="${park.surface}"></td>
             <td th:text="${park.openingYear}"></td>
 
-            <td> <a th:href ="@{deletePark(nameFromView=${park.parkName})}"
+            <td style="width=20%"> <a th:href ="@{deletePark(parkIdFromView=${park.parkId})}"
                     class="w3-button w3-red">  Delete this park </a> </td>
 
             <td> <a th:href ="@{updatePark(nameFromView=${park.parkName})}"
@@ -35,6 +35,7 @@
 
             <td th:text="${attraction.attractionName}"></td>
             <td th:text="${attraction.attractionDescription}"></td>
+            <td th:text="${attraction.park.parkName}"></td>
 
             <td> <a th:href ="@{deletePark(nameFromView=${attraction.attractionName})}"
                     class="w3-button w3-red">  Delete this Attraction </a> </td>
