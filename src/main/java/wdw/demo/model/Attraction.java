@@ -30,5 +30,11 @@ public class Attraction{
         this.attractionDescription = description;
     }
 
+    public Attraction(String name, String description, Park park){
+        this.attractionName = name;
+        this.attractionDescription = description;
+        this.park = park;
+        park.addAttraction(this);
+    }
 
 }

@@ -23,7 +23,7 @@ public class Park{
     private int surface;
     @Column(name="OPENING_YEAR")
     private int openingYear;
-    @JsonIgnore
+
     @OneToMany(mappedBy = "park", cascade = CascadeType.ALL)
     private List<Attraction> attractions = new ArrayList<>();
 
