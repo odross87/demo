@@ -47,6 +47,13 @@ public class ParkWebController {
         model.setViewName(result.hasErrors() ? "parkForm" : "parkReady");
 
         return "deletedpark";
+
+
+
+
+
+
+
     }
 
 

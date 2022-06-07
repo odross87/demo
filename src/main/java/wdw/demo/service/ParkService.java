@@ -2,7 +2,10 @@ package wdw.demo.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import wdw.demo.repository.ParkRepository;
 import wdw.demo.model.Park;
 
@@ -53,8 +56,30 @@ public class ParkService{
         }
     }
 
-    public Park updatePark(Park parkToUpdate){
-        return parkRepository.save(parkToUpdate);
+    public ResponseEntity<Park> updatePark(Park dataPark){
+
+        Optional<Park> parkFound = findParkById(dataPark.getParkId());
+
+            if (parkFound.isPresent()) {
+
+                Park parkToUpdate = parkFound.get();
+
+                if  (dataPark.getParkName() != null) {
+                    parkToUpdate.setParkName(dataPark.getParkName());
+                }
+                if  (dataPark.getSurface() != 0) {
+                    parkToUpdate.setSurface(dataPark.getSurface());
+                }
+                if (dataPark.getOpeningYear() != 0){
+                    parkToUpdate.setOpeningYear(dataPark.getOpeningYear());
+                }
+
+                Park parkUpdated = parkRepository.save(parkToUpdate);
+                return ResponseEntity.accepted().body(parkUpdated);
+            } else  return ResponseEntity.accepted().body(null);
+
+
+
     }
 
     public List<Park> listOfParks(){

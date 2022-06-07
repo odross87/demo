@@ -6,13 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import wdw.demo.model.Park;
 import wdw.demo.service.AttractionService;
 import wdw.demo.service.ParkService;
 
 @Controller
 @RequestMapping("/myresort")
-public class WdwWebController {
+public class MyResortWebController {
 
     @Autowired
     ParkService parkService;
@@ -38,6 +37,9 @@ public class WdwWebController {
 
 
     }
+
+
+
 
     @RequestMapping("/newPark")
     public String newPark () {

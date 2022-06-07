@@ -13,7 +13,7 @@
 
 <form class="w3-form w3-centered w3-margin w3-half" th:action="@{updatepark}" th:object="${park}" method="POST" >
     <h1 class="w3-container w3-blue">Update a new Park</h1>
-
+    <input id="parkId" type="hidden" value="" th:field="*{parkId}">
     <label class="w3-text-blue" for="namePark">Name of the new park</label>
     <input class="w3-input w3-border" id="namePark" type="text" value="" th:field="*{parkName}">
     <label class="w3-text-blue" for="surface" >Surface of the new park on ha</label>

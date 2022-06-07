@@ -80,8 +80,8 @@ public class ParkRestController {
                 parkToUpdate.setOpeningYear(dataPark.getOpeningYear());
             }
 
-            Park parkUpdated = parkservice.updatePark(parkToUpdate);
-            return ResponseEntity.accepted().body(parkUpdated);
+            //Park parkUpdated = parkservice.updatePark(parkToUpdate);
+            return ResponseEntity.accepted().body(null);
         } else  return ResponseEntity.accepted().body(null);
 
     }
