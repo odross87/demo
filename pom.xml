@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.company</groupId>
-	<artifactId>library1</artifactId>
+	<artifactId>MyThemeParkResort</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Resort</name>
 	<description>Resort project for Spring Boot</description>
