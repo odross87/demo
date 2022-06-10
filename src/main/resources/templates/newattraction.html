@@ -12,22 +12,25 @@
 
 
 <form class="w3-form w3-centered w3-margin w3-half" th:action="@{createAttraction}" th:object="${attraction}" method="POST" >
+
   <h1 class="w3-container w3-blue">Create a new Attraction</h1>
 
   <label class="w3-text-blue" for="attractionName">Name of the new attraction</label>
   <input class="w3-input w3-border" id="attractionName" type="text" value="" th:field="*{attractionName}">
+
   <label class="w3-text-blue" for="attractionDescription" >Description of the new attraction</label>
   <input class="w3-input w3-border" id="attractionDescription" type="text" value="" th:field="*{attractionDescription}">
+
   <label class="w3-text-blue" for="park" >Park</label>
   <select class="w3-input w3-border" id="park" type="text" value="" th:field="*{park}">
     <option th:each="park:${parksfromController}"
             th:value="${park.parkId}"
-            th:text="${park.parkName}"
-            th:selected="false"></option>
+            th:text="${park.parkName}"></option>
     </select>
 
 
   <input class="w3-button w3-blue w3-margin" type="submit" value="Submit">
+
   <a th:href ="@{/myresort/home}" class="w3-button w3-red w3-margin">Cancel</a>
 
 </form>

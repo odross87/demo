@@ -18,12 +18,15 @@ public class ParkWebController {
 
     @RequestMapping("/createParkForm")
     public String showParkForm(Model model){
+
         model.addAttribute("park", new Park());
+
         return "newpark";
     }
 
     @RequestMapping("/createpark")
     public String createPark(Park park) {
+
         parkService.createPark(park);
 
         return "redirect:/myresort/home";
@@ -35,7 +38,6 @@ public class ParkWebController {
         model.addAttribute("park", parkToUpdate);
         return "updatepark";
     }
-
 
     @RequestMapping("/updatePark")
     public String updatePark(Park park) {

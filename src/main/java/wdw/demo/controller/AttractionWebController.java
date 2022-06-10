@@ -23,6 +23,7 @@ public class AttractionWebController {
 
     @RequestMapping("/createAttractionForm")
     public String showAttractionForm(Model model) {
+
         model.addAttribute("attraction", new Attraction());
         model.addAttribute("parksfromController",
                 parkService.listOfParks());
@@ -32,10 +33,8 @@ public class AttractionWebController {
 
     @RequestMapping("/createAttraction")
     public String createAttraction(Attraction attraction, BindingResult result) {
-        ModelAndView model = new ModelAndView();
+
         attractionService.createAttraction(attraction);
-        model.addObject("attraction", attraction);
-        model.setViewName(result.hasErrors() ? "attractionForm" : "attractionReady");
 
         return "redirect:/myresort/home";
     }
@@ -43,17 +42,21 @@ public class AttractionWebController {
     //Todo Update Attraction
     @RequestMapping("/updateAttractionForm")
     public String showAttractionUpdateForm(Model model, Long attractionId){
+
         Attraction attractionToUpdate = attractionService.getAttractionByID(attractionId).get();
         model.addAttribute("attraction", attractionToUpdate);
         model.addAttribute("parksfromController",
                 parkService.listOfParks());
+
         return "updateattraction";
     }
 
 
     @RequestMapping("/updateAttraction")
     public String updateAttraction(Attraction attraction) {
+
         attractionService.updateAttraction(attraction);
+
         return "redirect:/myresort/home";
 
     }

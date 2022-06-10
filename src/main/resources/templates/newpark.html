@@ -16,11 +16,15 @@
 
     <label class="w3-text-blue" for="namePark">Name of the new park</label>
     <input class="w3-input w3-border" id="namePark" type="text" value="" th:field="*{parkName}">
+
     <label class="w3-text-blue" for="surface" >Surface of the new park on ha</label>
     <input class="w3-input w3-border" id="surface" type="text" value="" th:field="*{surface}">
+
     <label class="w3-text-blue" for="openingYear" >Opening year</label>
     <input class="w3-input w3-border" id="openingYear" type="text" value="" th:field="*{openingYear}">
+
     <input class="w3-button w3-blue w3-margin" type="submit" value="Submit">
+
     <a th:href ="@{/myresort/home}" class="w3-button w3-red w3-margin">Cancel</a>
 
 </form>
