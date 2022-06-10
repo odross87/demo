@@ -32,10 +32,10 @@ public class WdwApplicationTest {
 
     @Test
     void CreateParks(){
-        Park park1 = new Park("Magic Kingdom", 49, 1975);
-        Park park2 = new Park("EPCOT Center", 68, 1982);
-        Park park3 = new Park("Hollywood Studios", 52, 1987);
-        Park park4 = new Park("Animal Kingdom", 89, 2001);
+        Park park1 = new Park(1L, "Magic Kingdom", 49, 1975);
+        Park park2 = new Park(2L,"EPCOT Center", 68, 1982);
+        Park park3 = new Park(3L,"Hollywood Studios", 52, 1987);
+        Park park4 = new Park(4L,"Animal Kingdom", 89, 2001);
 
         parkService.createPark(park1);
         parkService.createPark(park2);
@@ -63,7 +63,7 @@ public class WdwApplicationTest {
     @Test
     void assignParkToNewAttractions(){
         //find by id just one park
-        Optional<Park> parkFound = parkRepository.findById(205L);
+        Optional<Park> parkFound = parkRepository.findById(3L);
         //if park exists, then..
         if(parkFound.isPresent()) {
             //create attractions

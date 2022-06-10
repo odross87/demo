@@ -5,8 +5,10 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <body>
+<header class="w3-container w3-blue">
+    <h1 class="w3-animate-left">My Theme Park Resort Manager</h1>
+</header>
 <div class="w3-panel">
-    <h1 class="w3-container w3-blue">Resort CRUD</h1>
     <div class="w3-twothird w3-margin">
     <h3 class="w3-container w3-text-blue">Parks Table</h3>
 
@@ -23,20 +25,20 @@
             <td th:text="${park.surface} + ' Ha.'"></td>
             <td th:text="${park.openingYear}"></td>
 
-            <td style="width:100px"> <a th:href ="@{deletePark(parkIdFromView=${park.parkId})}"
+            <td style="width:100px"> <a th:href ="@{/park/deletePark(parkIdFromView=${park.parkId})}"
                     class="w3-button w3-red">Delete</a> </td>
 
-            <td style="width:100px"> <a th:href ="@{/park/formUpdate(parkId=${park.parkId})}"
+            <td style="width:100px"> <a th:href ="@{/park/updateParkForm(parkId=${park.parkId})}"
                     class="w3-button w3-green">Update</a> </td>
 
         </tr>
     </table>
     <p>
-        <a th:href="@{/park/form}" class="w3-button w3-blue">Add new park</a>
+        <a th:href="@{/park/createParkForm}" class="w3-button w3-blue">Add new park</a>
     </p>
     </div>
     <div class="w3-twothird w3-margin">
-    <h3 class="w3-container w3-text-blue">Attraction Table</h3>
+    <h3 class="w3-container w3-text-blue">Attractions Table</h3>
 
     <table class="w3-table-all w3-hoverable" >
         <tr>
@@ -53,14 +55,14 @@
             <td style="width:100px"> <a th:href ="@{/attraction/deleteAttraction(idFromView=${attraction.attractionId})}"
                     class="w3-button w3-red">Delete</a> </td>
 
-            <td style="width:100px"> <a th:href ="@{updateAttraction(nameFromView=${attraction.attractionName})}"
+            <td style="width:100px"> <a th:href ="@{/attraction/updateAttractionForm(attractionId=${attraction.attractionId})}"
                     class="w3-button w3-green">Update</a> </td>
 
         </tr>
     </table>
 
     <p>
-        <a th:href="@{/attraction/form}" class="w3-button w3-blue">Add new attraction</a>
+        <a th:href="@{/attraction/createAttractionForm}" class="w3-button w3-blue">Add new attraction</a>
     </p>
     </div>
 </div>
