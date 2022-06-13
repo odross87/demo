@@ -5,8 +5,11 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <body>
-<header class="w3-container w3-blue">
-    <h1 class="w3-animate-left">My Theme Park Resort Manager</h1>
+<header class="w3-bar w3-blue w3-xlarge">
+    <a href="#" class="w3-bar-item w3-button">Home</a>
+    <a href="#" class="w3-bar-item w3-button">Parks</a>
+    <a href="#" class="w3-bar-item w3-button">Attractions</a>
+    <a class="w3-right w3-animate-right w3-margin-right w3-bar-item w3-hide-small">My Theme Park Resort Manager</a>
 </header>
 <div class="w3-panel">
     <div class="w3-twothird w3-margin">
@@ -49,7 +52,7 @@
         <tr th:each="attraction:${attractionsfromController}">
 
             <td th:text="${attraction.attractionName}"></td>
-            <td th:text="${attraction.attractionDescription}"></td>
+            <td class="w3-hide-small" th:text="${attraction.attractionDescription}"></td>
             <td th:text="${attraction.park.parkName}"></td>
 
             <td style="width:100px"> <a th:href ="@{/attraction/deleteAttraction(idFromView=${attraction.attractionId})}"
@@ -66,5 +69,7 @@
     </p>
     </div>
 </div>
+
+
 </body>
 </html>
