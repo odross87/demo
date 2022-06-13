@@ -34,9 +34,9 @@ public class ApplicationCommandRunner implements CommandLineRunner {
         logger.info("Creating attractions");
 
 
-        Attraction attraction1 = new Attraction("Expedition Everest", "Wander into a Tibetan village at the base of Mount Everest and board a train to the top of the world.");
-        Attraction attraction2 = new Attraction("Kali River Rapids", "Skim across an erupting geyser, drift below a canopy of lush vegetation and be whisked along fast-moving rapids.");
-        Attraction attraction3 = new Attraction("Big Thunder Mountain", "Race through a haunted gold mine aboard a speeding train on this thrilling coaster-style attraction.");
+        Attraction attraction1 = new Attraction(5L, "Expedition Everest", "Wander into a Tibetan village at the base of Mount Everest and board a train to the top of the world.");
+        Attraction attraction2 = new Attraction(5L, "Kali River Rapids", "Skim across an erupting geyser, drift below a canopy of lush vegetation and be whisked along fast-moving rapids.");
+        Attraction attraction3 = new Attraction(5L, "Big Thunder Mountain", "Race through a haunted gold mine aboard a speeding train on this thrilling coaster-style attraction.");
 
         logger.info("Attractions created");
         logger.info("Creating parks");
@@ -96,7 +96,7 @@ public class ApplicationCommandRunner implements CommandLineRunner {
         long idPark = reader.nextLong();
 
         Park park = parkService.findParkById(idPark).get();
-        Attraction attractionCreated = new Attraction(name, description);
+        Attraction attractionCreated = new Attraction(5L, name, description);
         park.addAttraction(attractionCreated);
 
         attractionService.createAttraction(attractionCreated);

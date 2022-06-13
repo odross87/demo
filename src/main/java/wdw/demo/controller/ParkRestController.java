@@ -9,7 +9,7 @@ import wdw.demo.model.Park;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("apiPark")
+@RequestMapping("api")
 public class ParkRestController {
 
     @Autowired

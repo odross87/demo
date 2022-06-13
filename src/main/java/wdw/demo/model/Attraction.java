@@ -25,11 +25,16 @@ public class Attraction{
     @JoinColumn(name="park")
     private Park park;
 
-    public Attraction(String name, String description){
+    public Attraction(long id, String name, String description){
+        this.attractionId = id;
         this.attractionName = name;
         this.attractionDescription = description;
     }
 
+    public Attraction(String name, String description){
+        this.attractionName = name;
+        this.attractionDescription = description;
+    }
     public Attraction(String name, String description, Park park){
         this.attractionName = name;
         this.attractionDescription = description;
