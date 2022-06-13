@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update an existing Attraction</title>
+</head>
+<body>
+
+
+<form class="w3-form w3-centered w3-margin w3-half" th:action="@{updateAttraction}" th:object="${attraction}" method="POST" >
+    <h1 class="w3-container w3-blue">Update an existing Attraction</h1>
+
+    <input id="attractionId" type="hidden" value="" th:field="*{attractionId}">
+
+    <label class="w3-text-blue" for="attractionName">Name of the attraction</label>
+    <input class="w3-input w3-border" id="attractionName" type="text" value="" th:field="*{attractionName}">
+
+    <label class="w3-text-blue" for="attractionDescription" >Description of the attraction</label>
+    <input class="w3-input w3-border" id="attractionDescription" type="text" value="" th:field="*{attractionDescription}">
+
+    <label class="w3-text-blue" for="park" >Park</label>
+      <select class="w3-input w3-border" id="park" name="park" value="">
+         <option th:each="choice:${parksfromController}"
+                 th:value="${choice.parkId}"
+                 th:selected="(${choice.parkId} == *{park.parkId})"
+                 th:readonly="(${choice.parkId} == *{park.parkId})"
+                 th:text="${choice.parkName}">
+         </option>
+          <!--th:attr="choiceid=${choice.parkId}, park=*{park},showselected=(${choice.id} == *{park.parkId})"-->
+    </select>
+    <input class="w3-button w3-blue w3-margin" type="submit" value="Submit">
+
+    <a th:href ="@{/myresort/home}" class="w3-button w3-red w3-margin">Cancel</a>
+
+</form>
+
+</body>
+</html>

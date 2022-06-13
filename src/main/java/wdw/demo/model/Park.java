@@ -33,6 +33,13 @@ public class Park{
         this.openingYear = openingYear;
 
     }
+    public Park(Long id, String parkName, int surface, int openingYear){
+        this.parkId = id;
+        this.parkName = parkName;
+        this.surface = surface;
+        this.openingYear = openingYear;
+
+    }
 
     public void addAttraction(Attraction attraction){
         this.attractions.add(attraction);

@@ -28,24 +28,6 @@ public class MyResortWebController {
         return "web";
     }
 
-    @RequestMapping("/deletePark")
-    public String deletePark(@RequestParam Long parkIdFromView){
-
-        parkService.deleteParkById(parkIdFromView).getParkName();
-
-        return "deletedpark";
-
-
-    }
-
-
-
-
-    @RequestMapping("/newPark")
-    public String newPark () {
-
-        return "newpark";
-    }
 
 
 
