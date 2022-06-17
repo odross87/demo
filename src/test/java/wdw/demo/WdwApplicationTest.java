@@ -31,10 +31,10 @@ public class WdwApplicationTest {
 
     @Test
     void CreateParksAndRides(){
-        Park park1 = new Park( "Magic Kingdom", 49, 1975);
+        Park park1 = new Park("Animal Kingdom", 89, 2001);
         Park park2 = new Park("EPCOT Center", 68, 1982);
         Park park3 = new Park("Hollywood Studios", 52, 1987);
-        Park park4 = new Park("Animal Kingdom", 89, 2001);
+        Park park4 = new Park( "Magic Kingdom", 49, 1975);
 
 
 
