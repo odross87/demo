@@ -1,10 +1,10 @@
-package wdw.demo.controller;
+package Sanguino.ResortManager.controller;
 
+import Sanguino.ResortManager.service.ParkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import wdw.demo.service.ParkService;
-import wdw.demo.model.Park;
+import Sanguino.ResortManager.model.Park;
 
 import java.util.Optional;
 
@@ -27,7 +27,7 @@ public class ParkRestController {
 
 
     @GetMapping("getPark")
-    public Park findParkById(@RequestParam Long id){
+    public Park findParkById(@RequestParam String id){
 
         Optional<Park> parkFound = parkservice.findParkById(id);
         if (parkFound.isPresent()) return  parkFound.get();
@@ -54,7 +54,7 @@ public class ParkRestController {
 
 
     @DeleteMapping("deletePark")
-    public Park deletePark (@RequestParam Long id){
+    public Park deletePark (@RequestParam String id){
 
         return parkservice.deleteParkById(id);
     }
@@ -62,7 +62,7 @@ public class ParkRestController {
 
 
     @PutMapping("/updatePark/{id}")
-    public ResponseEntity<Park> updatePark (@PathVariable Long id, @RequestBody Park dataPark) {
+    public ResponseEntity<Park> updatePark (@PathVariable String id, @RequestBody Park dataPark) {
 
         Optional<Park> parkFound = parkservice.findParkById(id);
 

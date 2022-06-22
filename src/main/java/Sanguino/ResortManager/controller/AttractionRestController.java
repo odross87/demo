@@ -1,10 +1,10 @@
-package wdw.demo.controller;
+package Sanguino.ResortManager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import wdw.demo.model.Attraction;
-import wdw.demo.service.AttractionService;
+import Sanguino.ResortManager.model.Attraction;
+import Sanguino.ResortManager.service.AttractionService;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,9 +22,9 @@ public class AttractionRestController {
     }
 
     @GetMapping("getAttraction")
-    public Attraction findAttractionById(@RequestParam Long id){
+    public Attraction findAttractionById(@RequestParam String id){
 
-        Optional<Attraction> attractionFound = attractionService.getAttractionByID(id);
+        Optional<Attraction> attractionFound = attractionService.getAttractionById(id);
         if (attractionFound.isPresent()) return  attractionFound.get();
 
         return null;
@@ -53,7 +53,7 @@ public class AttractionRestController {
         return attractionCreated;
     }
     @DeleteMapping("deleteAttraction")
-    public Attraction deleteAttraction(@RequestParam Long id){
+    public Attraction deleteAttraction(@RequestParam String id){
 
         Attraction deteledAttraction = attractionService.deleleteAttraction(id);
 
@@ -61,9 +61,9 @@ public class AttractionRestController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Attraction> updateAttraction  (@PathVariable Long id, @RequestBody Attraction dataAttraction) {
+    public ResponseEntity<Attraction> updateAttraction  (@PathVariable String id, @RequestBody Attraction dataAttraction) {
 
-        Optional<Attraction> attractionToUpdate = attractionService.getAttractionByID(id);
+        Optional<Attraction> attractionToUpdate = attractionService.getAttractionById(id);
 
         if (attractionToUpdate.isPresent()){
 

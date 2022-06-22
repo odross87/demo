@@ -28,10 +28,10 @@
             <td th:text="${park.surface} + ' Ha.'"></td>
             <td th:text="${park.openingYear}"></td>
 
-            <td style="width:100px"> <a th:href ="@{/park/deletePark(parkIdFromView=${park.parkId})}"
+            <td style="width:100px"> <a th:href ="@{/park/deletePark(parkIdFromView=${park._id.toString()})}"
                     class="w3-button w3-red">Delete</a> </td>
 
-            <td style="width:100px"> <a th:href ="@{/park/updateParkForm(parkId=${park.parkId})}"
+            <td style="width:100px"> <a th:href ="@{/park/updateParkForm(parkIdFromView=${park._id.toString()})}"
                     class="w3-button w3-green">Update</a> </td>
 
         </tr>
@@ -55,10 +55,11 @@
             <td class="w3-hide-small" th:text="${attraction.attractionDescription}"></td>
             <td th:text="${attraction.park.parkName}"></td>
 
-            <td style="width:100px"> <a th:href ="@{/attraction/deleteAttraction(idFromView=${attraction.attractionId})}"
+
+            <td style="width:100px"> <a th:href ="@{/attraction/deleteAttraction(attractionId=${attraction._id.toString()})}"
                     class="w3-button w3-red">Delete</a> </td>
 
-            <td style="width:100px"> <a th:href ="@{/attraction/updateAttractionForm(attractionId=${attraction.attractionId})}"
+            <td style="width:100px"> <a th:href ="@{/attraction/updateAttractionForm(attractionId=${attraction._id.toString()})}"
                     class="w3-button w3-green">Update</a> </td>
 
         </tr>

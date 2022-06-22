@@ -1,13 +1,13 @@
-package wdw.demo.controller;
+package Sanguino.ResortManager.controller;
 
 
+import Sanguino.ResortManager.service.ParkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import wdw.demo.model.Park;
-import wdw.demo.service.ParkService;
+import Sanguino.ResortManager.model.Park;
 
 @Controller
 @RequestMapping("/park")
@@ -33,8 +33,8 @@ public class ParkWebController {
     }
 
     @RequestMapping("/updateParkForm")
-    public String showParkUpdateForm(Model model, Long parkId){
-        Park parkToUpdate = parkService.findParkById(parkId).get();
+    public String showParkUpdateForm(Model model, String parkIdFromView){
+        Park parkToUpdate = parkService.findParkById(parkIdFromView).get();
         model.addAttribute("park", parkToUpdate);
         return "updatepark";
     }
@@ -47,7 +47,7 @@ public class ParkWebController {
     }
 
     @RequestMapping("/deletePark")
-    public String deletePark(@RequestParam Long parkIdFromView){
+    public String deletePark(@RequestParam String parkIdFromView){
 
         parkService.deleteParkById(parkIdFromView).getParkName();
 

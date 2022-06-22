@@ -1,4 +1,4 @@
-package wdw.demo;
+package Sanguino.ResortManager;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,13 +1,11 @@
-package wdw.demo.service;
+package Sanguino.ResortManager.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import wdw.demo.repository.ParkRepository;
-import wdw.demo.model.Park;
+import Sanguino.ResortManager.repository.ParkRepository;
+import Sanguino.ResortManager.model.Park;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +31,7 @@ public class ParkService{
         return parkCreated;
     }
 
-    public Optional<Park> findParkById(Long id){
+    public Optional<Park> findParkById(String id){
 
         return parkRepository.findById(id);
     }
@@ -43,7 +41,7 @@ public class ParkService{
         return parkRepository.findParkByParkName(name);
     }
 
-    public Park deleteParkById(Long id){
+    public Park deleteParkById(String id){
         //Find out IF this id-book IS in our DB
         Optional<Park> parkContainer = findParkById(id);
 
@@ -58,7 +56,7 @@ public class ParkService{
 
     public ResponseEntity<Park> updatePark(Park dataPark){
 
-        Optional<Park> parkFound = findParkById(dataPark.getParkId());
+        Optional<Park> parkFound = findParkById(dataPark.get_id());
 
             if (parkFound.isPresent()) {
 

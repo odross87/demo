@@ -22,9 +22,9 @@
   <input class="w3-input w3-border" id="attractionDescription" type="text" value="" th:field="*{attractionDescription}">
 
   <label class="w3-text-blue" for="park" >Park</label>
-  <select class="w3-input w3-border" id="park" type="text" value="" th:field="*{park}">
+  <select class="w3-input w3-border" id="park" name="park" value="">
     <option th:each="park:${parksfromController}"
-            th:value="${park.parkId}"
+            th:value="${park._id.toString()}"
             th:text="${park.parkName}"></option>
     </select>
 
