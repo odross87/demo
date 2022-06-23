@@ -6,6 +6,10 @@ import Sanguino.ResortManager.service.ParkImageService;
 import Sanguino.ResortManager.service.ParkService;
 import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +18,7 @@ import Sanguino.ResortManager.model.Park;
 import org.springframework.web.multipart.*;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/park")
@@ -36,12 +41,8 @@ public class ParkWebController {
     public String createPark(Park park, MultipartFile file) throws IOException {
 
 
-        ParkImage parkImage  = new ParkImage();
-        parkImage.setName(park.get_id());
-        parkImage.setImage( new Binary(file.getBytes() ));
-
-        parkImageService.uploadParkImage(parkImage);
-        parkService.createPark(park);
+        Park parkCreated = parkService.createPark(park);
+        parkImageService.uploadParkImage(parkCreated.get_id().toString(), file);
 
         return "redirect:/myresort/home";
     }
@@ -67,5 +68,7 @@ public class ParkWebController {
 
         return "redirect:/myresort/home";
     }
+
+
 
 }
