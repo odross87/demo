@@ -54,5 +54,15 @@ public class ParkImageService {
 
     }
 
+    public ResponseEntity<byte[]> getParkImageByName(String name){
+
+        Optional<ParkImage> parkImage = parkImageRepository.findByName(name);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_JPEG);
+
+        return new ResponseEntity<>( parkImage.get().getImage().getData(), headers, HttpStatus.OK );
+
+    }
+
 
 }

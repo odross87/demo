@@ -41,4 +41,12 @@ public class ParkImageRestController {
         return parkImageService.getParkImage(id);
 
     }
+
+    @GetMapping("/getImageByName")
+    public ResponseEntity<byte[]> getParkRestImageByName(@RequestParam String name){
+
+
+        return parkImageService.getParkImage(name);
+
+    }
 }
