@@ -1,10 +1,8 @@
 package Sanguino.ResortManager.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.*;
-
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
 
 @Getter @Setter @ToString @NoArgsConstructor @AllArgsConstructor
 @Document("Attractions")

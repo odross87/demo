@@ -2,10 +2,7 @@ package Sanguino.ResortManager.model;
 
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.data.annotation.Id;
 
 
 @Getter @Setter @ToString @NoArgsConstructor @AllArgsConstructor
