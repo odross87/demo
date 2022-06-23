@@ -46,7 +46,7 @@ public class ParkImageRestController {
     public ResponseEntity<byte[]> getParkRestImageByName(@RequestParam String name){
 
 
-        return parkImageService.getParkImage(name);
+        return parkImageService.getParkImageByName(name);
 
     }
 }
