@@ -89,7 +89,7 @@
                     </div>
                     <div class="w3-row">
                         <div class="w3-col l4 m4 s4">
-                            <img th:src="@{/apiParkImage/getImageByName/${park._id}}" style="width:100%" class="w3-circle w3-margin-top"/>
+                            <img th:src="@{/apiParkImage/getImageByName/name=${park._id}}" style="width:100%" class="w3-circle w3-margin-top"/>
                         </div>
                         <div class="w3-col l8 m8 s8">
                             <p class="w3-margin-left" th:text="' Extension: ' + ${park.surface} + ' Ha.'"></p>
