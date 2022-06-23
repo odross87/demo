@@ -42,7 +42,7 @@
                             <a th:href ="@{/park/updateParkForm(parkIdFromView=${park._id.toString()})}" class="w3-button w3-gray w3-margin ">Update</a>
                         </div>
                     </div>
-                    <button class="w3-button w3-block w3-dark-grey">See all rides</button>
+                    <a th:href ="@{/myresort/detailPark(id=${park._id.toString()})}" class="w3-button w3-block w3-dark-grey">Details</a>
                 </div>
             </div>
         </div>
