@@ -1,16 +1,15 @@
-package wdw.demo.controller;
+package Sanguino.ResortManager.controller;
 
+import Sanguino.ResortManager.model.Park;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import wdw.demo.model.Attraction;
-import wdw.demo.model.Park;
-import wdw.demo.service.AttractionService;
-import wdw.demo.service.ParkService;
+import Sanguino.ResortManager.model.Attraction;
+import Sanguino.ResortManager.service.AttractionService;
+import Sanguino.ResortManager.service.ParkService;
 
 @Controller
 @RequestMapping("/attraction")
@@ -32,8 +31,7 @@ public class AttractionWebController {
     }
 
     @RequestMapping("/createAttraction")
-    public String createAttraction(Attraction attraction, BindingResult result) {
-
+    public String createAttraction(Attraction attraction) {
         attractionService.createAttraction(attraction);
 
         return "redirect:/myresort/home";
@@ -41,9 +39,9 @@ public class AttractionWebController {
 
     //Todo Update Attraction
     @RequestMapping("/updateAttractionForm")
-    public String showAttractionUpdateForm(Model model, Long attractionId){
+    public String showAttractionUpdateForm(Model model, String attractionId){
 
-        Attraction attractionToUpdate = attractionService.getAttractionByID(attractionId).get();
+        Attraction attractionToUpdate = attractionService.getAttractionById(attractionId).get();
         model.addAttribute("attraction", attractionToUpdate);
         model.addAttribute("parksfromController",
                 parkService.listOfParks());
@@ -63,9 +61,9 @@ public class AttractionWebController {
 
 
     @RequestMapping("/deleteAttraction")
-    public String deleteAttraction(@RequestParam Long idFromView){
+    public String deleteAttraction(@RequestParam String attractionId){
 
-        attractionService.deleleteAttraction(idFromView);
+        attractionService.deleleteAttraction(attractionId);
 
         return "redirect:/myresort/home";
 

@@ -1,10 +1,10 @@
-package wdw.demo.service;
+package Sanguino.ResortManager.service;
 
+import Sanguino.ResortManager.model.Attraction;
+import Sanguino.ResortManager.repository.AttractionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
-import wdw.demo.repository.AttractionRepository;
-import wdw.demo.model.Attraction;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +29,7 @@ public class AttractionService{
         return attractions;
     }
 
-    public Optional<Attraction> getAttractionByID(@RequestParam Long id) {
+    public Optional<Attraction> getAttractionById(@RequestParam String id) {
         Optional<Attraction> attraction = attractionRepository.findById(id);
 
         return attraction;
@@ -48,8 +48,8 @@ public class AttractionService{
 
     }
 
-    public Attraction deleleteAttraction(Long id) {
-        Optional<Attraction> attractionContainer = getAttractionByID(id);
+    public Attraction deleleteAttraction(String id) {
+        Optional<Attraction> attractionContainer = getAttractionById(id);
 
             if(attractionContainer.isPresent()){
                 Attraction attractionFound = attractionContainer.get();
