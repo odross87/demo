@@ -12,6 +12,7 @@ public class Park{
     @Id
     private String _id;
 
+    private String parkDescription;
     private String parkName;
 
     private int surface;

@@ -12,30 +12,42 @@
     <a class="w3-right w3-animate-right w3-margin-right w3-bar-item w3-hide-small">My Theme Park Resort Manager</a>
 </header>
 <div class="w3-panel">
-    <div class="w3-twothird w3-margin">
-    <h3 class="w3-container w3-text-blue">Parks Table</h3>
+    <div class="w3-margin">
+        <h3 class="w3-container w3-text-blue">Parks</h3>
 
-    <table class="w3-table-all w3-hoverable" >
-        <tr>
-            <th>Name </th>
-            <th>Surface </th>
-            <th>Opening Year </th>
-        </tr>
+        <div id="parks" class="w3-row" >
 
-        <tr th:each="park:${parksfromController}">
+            <div style="height:100%" class="w3-col s12 m6 l4" th:each="park:${parksfromController}">
+                <div style="height:100%" class="w3-card-4 w3-margin">
+                    <header class="w3-container w3-light-grey">
+                        <h3 th:text="${park.parkName}"></h3>
+                    </header>
 
-            <td th:text="${park.parkName}"></td>
-            <td th:text="${park.surface} + ' Ha.'"></td>
-            <td th:text="${park.openingYear}"></td>
+                    <div style="height:100%"  class="w3-container">
+                        <div class="w3-row">
+                            <p class="w3-margin-left" th:text="${park.parkDescription}"></p>
+                            <hr/>
+                        </div>
+                        <div class="w3-row">
+                            <div class="w3-col l4 m4 s4">
+                                <img th:src="@{/apiParkImage/getImageByName(name=${park._id})}" style="width:100%" class="w3-circle w3-margin-top"/>
+                            </div>
+                            <div class="w3-col l8 m8 s8">
+                                <p class="w3-margin-left" th:text="' Extension: ' + ${park.surface} + ' Ha.'"></p>
+                                <p class="w3-margin-left" th:text="' Opening year: ' + ${park.openingYear}"></p>
+                            </div>
+                        </div>
+                        <div class="w3-row">
+                            <a th:href ="@{/park/deletePark(parkIdFromView=${park._id.toString()})}" class="w3-button w3-red w3-margin">Delete </a>
+                            <a th:href ="@{/park/updateParkForm(parkIdFromView=${park._id.toString()})}" class="w3-button w3-gray w3-margin ">Update</a>
+                        </div>
+                    </div>
+                    <button class="w3-button w3-block w3-dark-grey">See all rides</button>
+                </div>
+            </div>
+        </div>
 
-            <td style="width:100px"> <a th:href ="@{/park/deletePark(parkIdFromView=${park._id.toString()})}"
-                    class="w3-button w3-red">Delete</a> </td>
-
-            <td style="width:100px"> <a th:href ="@{/park/updateParkForm(parkIdFromView=${park._id.toString()})}"
-                    class="w3-button w3-green">Update</a> </td>
-
-        </tr>
-    </table>
+    </div>
     <p>
         <a th:href="@{/park/createParkForm}" class="w3-button w3-blue">Add new park</a>
     </p>
@@ -71,44 +83,7 @@
     </div>
 </div>
 
-<div class="w3-margin">
-    <h3 class="w3-container w3-text-blue">Parks</h3>
 
-    <div id="parks" class="w3-row" >
-
-        <div class="w3-col s12 m6 l4" th:each="park:${parksfromController}">
-            <div class="w3-card-4 w3-margin">
-                <header class="w3-container w3-light-grey">
-                    <h3 th:text="${park.parkName}"></h3>
-                </header>
-
-                <div class="w3-container">
-                    <div class="w3-row">
-                        <p>Descripción</p>
-                        <hr/>
-                    </div>
-                    <div class="w3-row">
-                        <div class="w3-col l4 m4 s4">
-                            <img th:src="@{/apiParkImage/getImageByName/name=${park._id}}" style="width:100%" class="w3-circle w3-margin-top"/>
-                        </div>
-                        <div class="w3-col l8 m8 s8">
-                            <p class="w3-margin-left" th:text="' Extension: ' + ${park.surface} + ' Ha.'"></p>
-                            <p class="w3-margin-left" th:text="' Opening year: ' + ${park.openingYear}"></p>
-                        </div>
-                    </div>
-                    <div class="w3-row">
-                        <a th:href ="@{/park/deletePark(parkIdFromView=${park._id.toString()})}" class="w3-button w3-red w3-margin">Delete </a>
-                        <a th:href ="@{/park/updateParkForm(parkIdFromView=${park._id.toString()})}" class="w3-button w3-gray w3-margin ">Update</a>
-                    </div>
-                </div>
-                <button class="w3-button w3-block w3-dark-grey">See all rides</button>
-            </div>
-
-
-
-        </div></div>
-
-</div>
 
 
 </body>
