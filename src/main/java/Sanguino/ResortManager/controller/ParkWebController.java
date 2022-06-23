@@ -37,7 +37,7 @@ public class ParkWebController {
 
 
         ParkImage parkImage  = new ParkImage();
-        parkImage.setName(park.get_id().toString());
+        parkImage.setName(park.get_id());
         parkImage.setImage( new Binary(file.getBytes() ));
 
         parkImageService.uploadParkImage(parkImage);

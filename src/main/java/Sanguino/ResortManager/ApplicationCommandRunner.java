@@ -7,8 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import Sanguino.ResortManager.service.ParkService;
 import Sanguino.ResortManager.service.AttractionService;
-import Sanguino.ResortManager.model.Park;
-import Sanguino.ResortManager.model.Attraction;
 import java.util.Scanner;
 
 @Component
