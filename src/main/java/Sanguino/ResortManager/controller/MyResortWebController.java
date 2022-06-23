@@ -35,7 +35,7 @@ public class MyResortWebController {
         Optional<Park> parkToFound= parkService.findParkById(id);
 
         if (parkToFound.isPresent()){
-            Park park = parkToFound.get();
+             Park park = parkToFound.get();
             containerToView.addAttribute("park",
                     park);
             containerToView.addAttribute("attractionsfromController",
