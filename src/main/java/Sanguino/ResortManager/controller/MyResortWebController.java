@@ -33,13 +33,15 @@ public class MyResortWebController {
     @RequestMapping("/detailPark")
     public String getDetailPark (String id, Model containerToView) {
         Optional<Park> parkToFound= parkService.findParkById(id);
+        containerToView.addAttribute("attractionsfromController",
+                attractionService.ListAllAttractions());
 
         if (parkToFound.isPresent()){
              Park park = parkToFound.get();
             containerToView.addAttribute("park",
                     park);
             containerToView.addAttribute("attractionsfromController",
-                    attractionService.ListAllAttractions());
+                    attractionService.ListAllAttractionsFromAPark(park.getParkName()));
 
             return "parkDetail";
         }

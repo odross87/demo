@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import Sanguino.ResortManager.model.Attraction;
 import Sanguino.ResortManager.service.AttractionService;
 import Sanguino.ResortManager.service.ParkService;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/attraction")
@@ -18,6 +21,9 @@ public class AttractionWebController {
     AttractionService attractionService;
     @Autowired
     ParkService parkService;
+
+    @Autowired
+    Attraction
 
     @RequestMapping("/createAttractionForm")
     public String showAttractionForm(Model model) {
@@ -30,8 +36,9 @@ public class AttractionWebController {
     }
 
     @RequestMapping("/createAttraction")
-    public String createAttraction(Attraction attraction) {
+    public String createAttraction(Attraction attraction, MultipartFile file) throws IOException {
         attractionService.createAttraction(attraction);
+        attractionImageService.uploadParkImage(parkCreated.get_id().toString(), file);
 
         return "redirect:/myresort/home";
     }
@@ -60,11 +67,11 @@ public class AttractionWebController {
 
 
     @RequestMapping("/deleteAttraction")
-    public String deleteAttraction(@RequestParam String attractionId){
+    public String deleteAttraction(@RequestParam String attractionId, String parkId){
 
         attractionService.deleleteAttraction(attractionId);
 
-        return "redirect:/myresort/home";
+        return "redirect:/myresort/detailPark?id=" + parkId;
 
 
     }

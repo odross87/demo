@@ -3,16 +3,58 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet">
+
 
 <body>
 <header class="w3-bar w3-blue w3-xlarge">
-    <a href="#" class="w3-bar-item w3-button">Home</a>
+    <a th:href ="@{/myresort/home}" class="w3-bar-item w3-button">Home</a>
     <a href="#" class="w3-bar-item w3-button">Parks</a>
     <a href="#" class="w3-bar-item w3-button">Attractions</a>
     <a class="w3-right w3-animate-right w3-margin-right w3-bar-item w3-hide-small">My Theme Park Resort Manager</a>
 </header>
 
-        <h3 th:text="${park.parkName}"></h3>
+        <h2 class="w3-center" th:text="${park.parkName}"></h2>
+
+
+
+<table class="w3-table-all w3-hoverable" >
+    <tr>
+        <th>Name </th>
+        <th>Description </th>
+        <th>Park </th>
+    </tr>
+    <tr th:each="attraction:${attractionsfromController}">
+
+        <td th:text="${attraction.attractionName}"></td>
+        <td class="w3-hide-small" th:text="${attraction.attractionDescription}"></td>
+        <td th:text="${attraction.park.parkName}"></td>
+
+
+        <td style="width:100px"> <a th:href ="@{/attraction/deleteAttraction(attractionId=${attraction._id.toString()}, parkId=${park._id})}"
+                                    class="w3-button w3-red">Delete</a> </td>
+
+        <td style="width:100px"> <a th:href ="@{/attraction/updateAttractionForm(attractionId=${attraction._id.toString()})}"
+                                    class="w3-button w3-green">Update</a> </td>
+
+    </tr>
+</table>
+
+<h2 class="w3-center" th:text="'Attractions from ' + ${park.parkName}"></h2>
+<div class="hover01 column">
+    <div>
+        <figure><img src="https://picsum.photos/300/200?image=244" /></figure>
+        <span>Hover</span>
+    </div>
+    <div>
+        <figure><img src="https://picsum.photos/300/200?image=1024" /></figure>
+        <span>Hover</span>
+    </div>
+    <div>
+        <figure><img src="https://picsum.photos/300/200?image=611" /></figure>
+        <span>Hover</span>
+    </div>
+</div>
 
 
 

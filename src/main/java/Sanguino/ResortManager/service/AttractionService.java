@@ -22,6 +22,13 @@ public class AttractionService{
         return attractions;
     }
 
+    public Iterable<Attraction> ListAllAttractionsFromAPark(String parkName) {
+
+        Iterable<Attraction> attractions = attractionRepository.findByPark(parkName);
+
+        return attractions;
+    }
+
     public List<Attraction> findAttractionByAttractionNameContaining(String name){
 
         List<Attraction> attractions = attractionRepository.findByAttractionNameContainingIgnoreCase(name);
