@@ -1,6 +1,7 @@
 package Sanguino.ResortManager.controller;
 
 
+import Sanguino.ResortManager.service.AttractionImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,7 @@ public class AttractionWebController {
     ParkService parkService;
 
     @Autowired
-    Attraction
+    AttractionImageService attractionImageService;
 
     @RequestMapping("/createAttractionForm")
     public String showAttractionForm(Model model) {
@@ -37,8 +38,8 @@ public class AttractionWebController {
 
     @RequestMapping("/createAttraction")
     public String createAttraction(Attraction attraction, MultipartFile file) throws IOException {
-        attractionService.createAttraction(attraction);
-        attractionImageService.uploadParkImage(parkCreated.get_id().toString(), file);
+        Attraction attractionCreated = attractionService.createAttraction(attraction);
+        attractionImageService.uploadAttractionImage(attractionCreated.get_id().toString(), file);
 
         return "redirect:/myresort/home";
     }

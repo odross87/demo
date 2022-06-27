@@ -11,7 +11,7 @@
 <body>
 
 
-<form class="w3-form w3-centered w3-margin w3-half" th:action="@{createAttraction}" th:object="${attraction}" method="POST" >
+<form class="w3-form w3-centered w3-margin w3-half" th:action="@{createAttraction}" th:object="${attraction}" enctype="multipart/form-data"  method="POST" >
 
   <h1 class="w3-container w3-blue">Create a new Attraction</h1>
 
@@ -28,6 +28,10 @@
             th:text="${park.parkName}"></option>
     </select>
 
+  <label class="w3-text-blue" for="attractionImage" >Picture of the Park</label>
+  <br>
+  <input class="w3-file" id="attractionImage" name="file" type="file">
+  <br>
 
   <input class="w3-button w3-blue w3-margin" type="submit" value="Submit">
 

@@ -14,7 +14,7 @@
     <a class="w3-right w3-animate-right w3-margin-right w3-bar-item w3-hide-small">My Theme Park Resort Manager</a>
 </header>
 
-        <h2 class="w3-center" th:text="${park.parkName}"></h2>
+<h2 class="w3-center" th:text="${park.parkName}"></h2>
 
 
 
@@ -42,18 +42,11 @@
 
 <h2 class="w3-center" th:text="'Attractions from ' + ${park.parkName}"></h2>
 <div class="hover01 column">
-    <div>
-        <figure><img src="https://picsum.photos/300/200?image=244" /></figure>
-        <span>Hover</span>
+    <div th:each="attraction:${attractionsfromController}">
+        <figure><img th:src="@{/apiAttractionImage/getImageByName(name=${attraction._id})}"></figure>
+        <span th:text="${attraction.attractionName}"></span>
     </div>
-    <div>
-        <figure><img src="https://picsum.photos/300/200?image=1024" /></figure>
-        <span>Hover</span>
-    </div>
-    <div>
-        <figure><img src="https://picsum.photos/300/200?image=611" /></figure>
-        <span>Hover</span>
-    </div>
+
 </div>
 
 
