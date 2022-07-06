@@ -20,8 +20,8 @@
  </div>
 
 <h2 class="w3-center" th:text="'Attractions from ' + ${park.parkName}"></h2>
-<div class="hover01 column">
-    <div class="w3-margin" th:each="attraction:${attractionsfromController}">
+<div class="hover01 w3-row">
+    <div class="w3-col l3  m4 s12" th:each="attraction:${attractionsfromController}">
         <figure><img th:src="@{/apiAttractionImage/getImageByName(name=${attraction._id})}"></figure>
         <span class="w3-centered" th:text="${attraction.attractionName}"></span>
     </div>

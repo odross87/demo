@@ -24,30 +24,11 @@ h2 span {
 	color: #aaa;
 	font-size: 85%;
 }
-.column {
-	margin: 15px 15px 0;
-	padding: 0;
-}
-.column:last-child {
-	padding-bottom: 60px;
-}
-.column::after {
-	content: '';
-	clear: both;
-	display: block;
-}
-.column div {
-	position: relative;
-	float: left;
-	width: 200px;
-	height: 200px;
-	margin: 0 0 0 25px;
-	padding: 0;
-}
-.column div:first-child {
-	margin-left: 0;
-}
-.column div span {
+
+
+
+
+.w3-row div span {
 	position: absolute;
 	bottom: -20px;
 	left: 0;
