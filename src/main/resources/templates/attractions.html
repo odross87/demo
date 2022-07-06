@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title >
+    Attractions
+</title>
+<body>
+<header class="w3-bar w3-blue w3-xlarge">
+    <a th:href ="@{/myresort/home}" class="w3-bar-item w3-button">Home</a>
+    <a th:href ="@{/myresort/parks}" class="w3-bar-item w3-button">Parks</a>
+    <a href="#" class="w3-bar-item w3-button">Attractions</a>
+    <a class="w3-right w3-animate-right w3-margin-right w3-bar-item w3-hide-small">My Theme Park Resort Manager</a>
+</header>
+<div class="w3-panel">
+    <div class="w3-margin">
+        <h3 class="w3-container w3-text-blue">Parks</h3>
+
+        <div id="parks" class="w3-row" >
+
+            <div style="height:100%" class="w3-col s12 m6 l4" th:each="attraction:${attractionsfromController}">
+                <div style="height:100%" class="w3-card-4 w3-margin">
+                    <header class="w3-container w3-light-grey" style="height:100px">
+                        <h3 th:text="${attraction.attractionName}"></h3>
+                    </header>
+
+                    <div style="height:320px"  class="w3-container">
+                        <div class="w3-row" style="height:75px">
+                            <p class="w3-margin-left" th:text="${attraction.attractionDescription}"></p>
+                        </div>
+                            <hr/>
+                        <div class="w3-row">
+                            <div class="w3-col l4 m4 s4">
+                                    <img th:src="@{/apiAttractionImage/getImageByName(name=${attraction._id})}" style="height:100%; width:100%; object-fit: cover; border-radius: 50%;" class="w3-margin-top"/>
+
+                            </div>
+                            <div class="w3-col l8 m8 s8">
+                                <p class="w3-margin-left" th:text="' Park: '  + ${attraction.park.parkName}"></p>
+                                <p class="w3-margin-left" th:text="' Opening year: '"></p>
+                            </div>
+                        </div>
+                        <div class="w3-row w3-margin">
+                            <a th:href ="@{/attraction/deleteAttraction(attractionId=${attraction._id.toString()})}" class="w3-button w3-red w3-mobile">Delete </a>
+                            <a th:href ="@{/attraction/updateAttractionForm(attractionId=${attraction._id.toString()})}" class="w3-button w3-gray w3-mobile">Update</a>
+                        </div>
+                    </div>
+                    <a class="w3-button w3-block w3-dark-grey">Details</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <p>
+        <a  th:href="@{/attraction/createAttractionForm}" class="w3-button w3-blue">Add new attraction</a>
+    </p>
+ </div>
+
+
+</body>
+</html>

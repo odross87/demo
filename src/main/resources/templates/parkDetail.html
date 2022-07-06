@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet">
+    <title th:text="${park.parkName}">
 
+    </title>
+</head>
 
 <body>
 <header class="w3-bar w3-blue w3-xlarge">
     <a th:href ="@{/myresort/home}" class="w3-bar-item w3-button">Home</a>
-    <a href="#" class="w3-bar-item w3-button">Parks</a>
-    <a href="#" class="w3-bar-item w3-button">Attractions</a>
+    <a th:href ="@{/myresort/parks}" class="w3-bar-item w3-button">Parks</a>
+    <a th:href ="@{/myresort/attractions}"  class="w3-bar-item w3-button">Attractions</a>
     <a class="w3-right w3-animate-right w3-margin-right w3-bar-item w3-hide-small">My Theme Park Resort Manager</a>
 </header>
 
- <div class="w3-center">
-<h2 class="w3-center w3-margin" th:text="${park.parkName}"></h2>
-     <img class="w3-" style="max-height:300px" th:src="@{/apiParkImage/getImageByName(name=${park._id})}">
- </div>
 
-<h2 class="w3-center" th:text="'Attractions from ' + ${park.parkName}"></h2>
-<div class="hover01 w3-row">
-    <div class="w3-col l3  m4 s12" th:each="attraction:${attractionsfromController}">
-        <figure><img th:src="@{/apiAttractionImage/getImageByName(name=${attraction._id})}"></figure>
-        <span class="w3-centered" th:text="${attraction.attractionName}"></span>
+<div class="w3-center">
+    <h2 class="w3-center w3-margin" th:text="${park.parkName}"></h2>
+    <img class="w3-" style="max-height:300px" th:src="@{/apiParkImage/getImageByName(name=${park._id})}">
+</div>
+<div id="attractionsGrid" style="width:99%; margin:auto">
+    <h2 class="w3-center" th:text="'Attractions from ' + ${park.parkName}"></h2>
+    <div class="hover01 w3-row w3-center">
+        <div class="w3-col l3 m4 s12" style="min-width=300px" th:each="attraction:${attractionsfromController}">
+            <figure>
+                <img th:src="@{/apiAttractionImage/getImageByName(name=${attraction._id})}">
+            </figure>
+            <span class="" th:text="${attraction.attractionName}"></span>
+        </div>
     </div>
-
 </div>
 
 

@@ -30,6 +30,25 @@ public class MyResortWebController {
         return "web";
     }
 
+    @RequestMapping("/parks")
+    public String getParks (Model containerToView) {
+        containerToView.addAttribute("parksfromController",
+                parkService.listOfParks());
+        containerToView.addAttribute("attractionsfromController",
+                attractionService.ListAllAttractions());
+
+        return "parks";
+    }
+    @RequestMapping("/attractions")
+    public String getAttractions (Model containerToView) {
+        containerToView.addAttribute("parksfromController",
+                parkService.listOfParks());
+        containerToView.addAttribute("attractionsfromController",
+                attractionService.ListAllAttractions());
+
+        return "attractions";
+    }
+
     @RequestMapping("/detailPark")
     public String getDetailPark (String id, Model containerToView) {
         Optional<Park> parkToFound= parkService.findParkById(id);
