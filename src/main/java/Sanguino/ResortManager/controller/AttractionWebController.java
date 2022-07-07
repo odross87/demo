@@ -72,7 +72,7 @@ public class AttractionWebController {
 
         attractionService.deleleteAttraction(attractionId);
 
-        return "redirect:/myresort/detailPark?id=" + parkId;
+        return "redirect:/myresort/home";
 
 
     }

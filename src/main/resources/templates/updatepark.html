@@ -11,24 +11,28 @@
 <body>
 
 
-<form class="w3-form w3-centered w3-margin w3-half" th:action="@{updatePark}" th:object="${park}" method="POST" >
+<form class="w3-form w3-centered w3-margin w3-half" th:action="@{updatePark}" th:object="${park}" enctype="multipart/form-data" method="POST" >
 
     <h1 class="w3-container w3-blue">Update an existing Park</h1>
 
-    <input id="_id" type="hidden" value="" th:field="*{_id}">
+    <input id="_id" type="hidden" name="id" th:value="*{_id}">
+
+    <label class="w3-text-blue" for="descPark">Description of the new park</label>
+    <input class="w3-input w3-border" id="descPark" type="text" value="" th:field="*{parkDescription}">
 
     <label class="w3-text-blue" for="namePark">Name of the park</label>
-    <input class="w3-input w3-border" id="namePark" type="text" value="" th:field="*{parkName}">
+    <input class="w3-input w3-border" id="namePark" type="text" th:field="*{parkName}">
 
     <label class="w3-text-blue" for="surface" >Surface of the park on ha</label>
-    <input class="w3-input w3-border" id="surface" type="text" value="" th:field="*{surface}">
+    <input class="w3-input w3-border" id="surface" type="text"th:field="*{surface}">
 
     <label class="w3-text-blue" for="openingYear" >Opening year</label>
-    <input class="w3-input w3-border" id="openingYear" type="text" value="" th:field="*{openingYear}">
+    <input class="w3-input w3-border" id="openingYear" type="text"th:field="*{openingYear}">
 
-    <label class="w3-text-blue" for="parkImage" >Picture of the Park</label>
-    <input class="w3-file" id="parkImage" name="parkImage" type="file">
-
+    <label class="w3-text-blue" for="poster" >Picture of the Park</label>
+    <br>
+    <input class="w3-file" id="poster" name="file" type="file">
+    <br>
     <input class="w3-button w3-blue w3-margin" type="submit" value="Submit">
 
     <a th:href ="@{/myresort/home}" class="w3-button w3-red w3-margin">Cancel</a>

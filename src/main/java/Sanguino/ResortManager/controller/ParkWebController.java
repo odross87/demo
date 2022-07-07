@@ -55,10 +55,44 @@ public class ParkWebController {
     }
 
     @RequestMapping("/updatePark")
-    public String updatePark(Park park) {
-        parkService.updatePark(park);
-        return "redirect:/myresort/home";
+    public String updatePark(Park park, String id, MultipartFile file) throws IOException {
 
+        Optional<Park> parkFound = parkService.findParkById(id);
+
+        if (parkFound.isPresent()) {
+
+            Park parkToUpdate = parkFound.get();
+
+            if  (park.getParkName() != null) {
+                parkToUpdate.setParkName(park.getParkName());
+            }
+            if  (park.getParkDescription() != null) {
+                parkToUpdate.setParkDescription(park.getParkDescription());
+            }
+            if  (park.getSurface() != 0) {
+                parkToUpdate.setSurface(park.getSurface());
+            }
+            if (park.getOpeningYear() != 0){
+                parkToUpdate.setOpeningYear(park.getOpeningYear());
+            }
+            if (file != null){
+
+                parkImageService.uploadParkImage(parkToUpdate.get_id().toString(), file);
+            }
+
+            parkService.updatePark(parkToUpdate);
+
+
+
+            return "redirect:/myresort/home";
+
+        } else  return "redirect:/myresort/home";
+
+
+
+        //parkService.updatePark(park);
+       // parkImageService.uploadParkImage(park.get_id().toString(), file);
+       //
     }
 
     @RequestMapping("/deletePark")

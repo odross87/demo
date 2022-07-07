@@ -73,6 +73,9 @@ public class ParkRestController {
             if  (dataPark.getParkName() != null) {
                 parkToUpdate.setParkName(dataPark.getParkName());
             }
+            if  (dataPark.getParkDescription() != null) {
+                parkToUpdate.setParkDescription(dataPark.getParkDescription());
+            }
             if  (dataPark.getSurface() != 0) {
                 parkToUpdate.setSurface(dataPark.getSurface());
             }
