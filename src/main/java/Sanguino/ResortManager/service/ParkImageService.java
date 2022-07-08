@@ -64,5 +64,15 @@ public class ParkImageService {
 
     }
 
+    public void deleteParkImagebyName(String name){
+
+        Optional<ParkImage> parkImage = parkImageRepository.findByName(name);
+        if (parkImage.isPresent()){
+            ParkImage parkImageToDelete = parkImage.get();
+            parkImageRepository.deleteById(parkImageToDelete.getId());
+        }
+
+    }
+
 
 }

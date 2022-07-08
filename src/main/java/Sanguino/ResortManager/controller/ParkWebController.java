@@ -75,7 +75,8 @@ public class ParkWebController {
             if (park.getOpeningYear() != 0){
                 parkToUpdate.setOpeningYear(park.getOpeningYear());
             }
-            if (file != null){
+            if (!file.isEmpty()){
+                parkImageService.deleteParkImagebyName(parkToUpdate.get_id());
 
                 parkImageService.uploadParkImage(parkToUpdate.get_id().toString(), file);
             }
@@ -88,11 +89,6 @@ public class ParkWebController {
 
         } else  return "redirect:/myresort/home";
 
-
-
-        //parkService.updatePark(park);
-       // parkImageService.uploadParkImage(park.get_id().toString(), file);
-       //
     }
 
     @RequestMapping("/deletePark")
