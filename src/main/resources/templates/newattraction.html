@@ -11,22 +11,26 @@
 <body>
 
 
-  <form class="w3-form w3-centered w3-margin w3-half" th:action="@{createAttraction}"  enctype="multipart/form-data"  method="POST" >
+  <form class="w3-form w3-centered w3-margin w3-half" th:action="@{createAttraction}" th:object="${park}" enctype="multipart/form-data"  method="POST" >
 
     <h1 class="w3-container w3-blue">Create a new Attraction</h1>
 
     <label class="w3-text-blue" for="attractionName">Name of the new attraction</label>
-    <input class="w3-input w3-border" id="attractionName" type="text" value="" th:field="*{attractionName}">
+    <input class="w3-input w3-border" id="attractionName" type="text" th:field="*{attractionName}">
 
     <label class="w3-text-blue" for="attractionDescription" >Description of the new attraction</label>
-    <input class="w3-input w3-border" id="attractionDescription" type="text" value="" th:field="*{attractionDescription}">
+    <input class="w3-input w3-border" id="attractionDescription" type="text" th:field="*{attractionDescription}">
 
     <label class="w3-text-blue" for="park" >Park</label>
     <select class="w3-input w3-border" id="park" name="park" value="">
-      <option th:each="park:${parksfromController}"
-              th:value="${park._id.toString()}"
-              th:text="${park.parkName}"></option>
-      </select>
+      <option th:each="choice:${parksfromController}"
+              th:value="${choice._id}"
+              th:selected="(${choice._id} == *{park._id})"
+              th:readonly="(${choice._id} == *{park._id})"
+              th:text="${choice.parkName}">
+      </option>
+
+    </select>
 
     <label class="w3-text-blue" for="attractionImage" >Picture of the Park</label>
     <br>

@@ -75,7 +75,7 @@ public class ParkWebController {
             if (park.getOpeningYear() != 0){
                 parkToUpdate.setOpeningYear(park.getOpeningYear());
             }
-            if (!file.isEmpty()){
+            if (!file.isEmpty() || file != null){
                 parkImageService.deleteParkImagebyName(parkToUpdate.get_id());
 
                 parkImageService.uploadParkImage(parkToUpdate.get_id().toString(), file);

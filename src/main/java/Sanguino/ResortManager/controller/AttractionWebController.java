@@ -1,8 +1,10 @@
 package Sanguino.ResortManager.controller;
 
 
+import Sanguino.ResortManager.model.Park;
 import Sanguino.ResortManager.service.AttractionImageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,7 @@ import Sanguino.ResortManager.service.ParkService;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/attraction")
@@ -41,6 +44,7 @@ public class AttractionWebController {
         Attraction attractionCreated = attractionService.createAttraction(attraction);
         attractionImageService.uploadAttractionImage(attractionCreated.get_id().toString(), file);
 
+
         return "redirect:/myresort/home";
     }
 
@@ -58,9 +62,36 @@ public class AttractionWebController {
 
 
     @RequestMapping("/updateAttraction")
-    public String updateAttraction(Attraction attraction) {
+    public String updateAttraction(Attraction dataAttraction, String id, MultipartFile file) throws IOException {
 
-        attractionService.updateAttraction(attraction);
+        Optional<Attraction> attractionToUpdate = attractionService.getAttractionById(id);
+
+        if (attractionToUpdate.isPresent()){
+
+            Attraction attractionFound = attractionToUpdate.get();
+
+            if(dataAttraction.getAttractionName() != null) {
+                attractionFound.setAttractionName(dataAttraction.getAttractionName());
+            }
+
+            if(dataAttraction.getAttractionDescription() != null){
+                attractionFound.setAttractionDescription(dataAttraction.getAttractionDescription());
+            }
+
+            if(dataAttraction.getPark() != null){
+                attractionFound.setPark(dataAttraction.getPark());
+            }
+
+            if (!file.isEmpty() || file != null){
+                attractionImageService.deleteParkImagebyName(attractionFound.get_id());
+
+                attractionImageService.uploadAttractionImage(attractionFound.get_id().toString(), file);
+            }
+
+            Attraction attractionUpdated = attractionService.updateAttraction(attractionFound);
+
+        }
+
 
         return "redirect:/myresort/home";
 

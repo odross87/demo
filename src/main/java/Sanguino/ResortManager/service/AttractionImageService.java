@@ -65,5 +65,15 @@ public class AttractionImageService {
 
     }
 
+    public void deleteParkImagebyName(String name){
+
+        Optional<AttractionImage> attImage = attractionImageRepository.findByName(name);
+        if (attImage.isPresent()){
+            AttractionImage attImageToDelete = attImage.get();
+            attractionImageRepository.deleteById(attImageToDelete.getId());
+        }
+
+    }
+
 
 }
