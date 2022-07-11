@@ -18,8 +18,6 @@ public class Park{
     private int surface;
     private int openingYear;
 
-
-
     public Park(String parkName, int surface, int openingYear){
         this.parkName = parkName;
         this.surface = surface;
