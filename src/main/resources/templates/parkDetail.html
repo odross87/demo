@@ -19,12 +19,15 @@
 
 <div class="w3-center">
     <h2 class="w3-center w3-margin" th:text="${park.parkName}"></h2>
-    <img class="w3-" style="max-height:300px" th:src="@{/apiParkImage/getImageByName(name=${park._id})}">
+    <img style="max-height:300px" th:src="@{/apiParkImage/getImageByName(name=${park._id})}">
+    <p class="w3-center w3-margin" th:text="${park.parkDescription}"></p>
+    <p class="w3-center" th:text="'Surface: ' + ${park.surface} + ' ha.                Opening year: ' + ${park.openingYear}"></p>
+
 </div>
 <div id="attractionsGrid" class="w3-center" style="width:99%; margin:auto">
     <h2 class="w3-center" th:text="'Attractions in ' + ${park.parkName}"></h2>
-    <div class="hover01 w3-row w3-center">
-        <div class="w3-col xl2 l3 m4 s6 w3-center" th:each="attraction:${attractionsfromController}">
+    <div class="hover01 w3-row" style="width:100%; margin:auto">
+        <div class="w3-col xl2 l3 m4 s6 w3-center w3-padding-16" th:each="attraction:${attractionsfromController}">
             <figure class="container">
                 <img th:src="@{/apiAttractionImage/getImageByName(name=${attraction._id})}">
                 <div class="centered">

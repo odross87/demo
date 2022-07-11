@@ -18,7 +18,7 @@ Parks
     <div class="w3-margin">
         <h3 class="w3-container w3-text-blue">Parks</h3>
 
-        <div id="parks" class="w3-row" style="max-width:1500px" >
+        <div id="parks" class="w3-row" style="max-width:1600px; margin:auto" >
 
             <div style="height:100%" class="w3-col s12 m6 l4" th:each="park:${parksfromController}">
                 <div style="height:100%" class="w3-card-4 w3-margin">
@@ -26,7 +26,7 @@ Parks
                         <h3 th:text="${park.parkName}"></h3>
                     </header>
 
-                    <div style="height:370px"  class="w3-container">
+                    <div style="max-height:370px"  class="w3-container">
                         <div class="w3-row" style="height:75px">
                             <p class="w3-margin-left" th:text="${park.parkDescription}"></p>
                         </div>
@@ -40,9 +40,9 @@ Parks
                                 <p class="w3-margin-left" th:text="' Opening year: ' + ${park.openingYear}"></p>
                             </div>
                         </div>
-                        <div class="w3-row">
-                            <a th:href ="@{/park/deletePark(parkIdFromView=${park._id.toString()})}" class="w3-button w3-red w3-margin">Delete </a>
-                            <a th:href ="@{/park/updateParkForm(parkIdFromView=${park._id.toString()})}" class="w3-button w3-gray w3-margin ">Update</a>
+                        <div class="w3-row w3-margin">
+                            <a th:href ="@{/park/deletePark(parkIdFromView=${park._id.toString()})}" class="w3-mobile w3-button w3-red ">Delete </a>
+                            <a th:href ="@{/park/updateParkForm(parkIdFromView=${park._id.toString()})}" class="w3-mobile w3-button w3-gray  ">Update</a>
                         </div>
                     </div>
                     <a th:href ="@{/myresort/detailPark(id=${park._id.toString()})}" class="w3-button w3-block w3-dark-grey">Details</a>
