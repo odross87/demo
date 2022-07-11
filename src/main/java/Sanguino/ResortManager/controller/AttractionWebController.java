@@ -45,7 +45,7 @@ public class AttractionWebController {
         attractionImageService.uploadAttractionImage(attractionCreated.get_id().toString(), file);
 
 
-        return "redirect:/myresort/home";
+        return "redirect:/myresort/attractions";
     }
 
     //Todo Update Attraction
@@ -82,7 +82,7 @@ public class AttractionWebController {
                 attractionFound.setPark(dataAttraction.getPark());
             }
 
-            if (!file.isEmpty() || file != null){
+            if (!file.isEmpty()){
                 attractionImageService.deleteParkImagebyName(attractionFound.get_id());
 
                 attractionImageService.uploadAttractionImage(attractionFound.get_id().toString(), file);
@@ -93,7 +93,7 @@ public class AttractionWebController {
         }
 
 
-        return "redirect:/myresort/home";
+        return "redirect:/myresort/attractions";
 
     }
 
@@ -103,7 +103,7 @@ public class AttractionWebController {
 
         attractionService.deleleteAttraction(attractionId);
 
-        return "redirect:/myresort/home";
+        return "redirect:/myresort/attractions";
 
 
     }
